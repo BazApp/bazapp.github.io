@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>БазАрр</title>
+      <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+         crossorigin="anonymous"
+      />
+      <link
+         rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="../styles.css" />
+   </head>
+   <body>
+      <script>
+         const categories = ["ofsite", ""];
+         const stores = [
+            {
+               name: "Google Play",
+               info: "Google",
+               idname: "googleplay",
+               os: "android",
+               like: true,
+               security: true,
+            },
+            "ofsite",
+            "appstore",
+            "microsoftstore",
+            "rustore",
+            "appgallery",
+            "rumarket",
+            "getapps",
+            "uptodown",
+            "trashbox",
+            "4pda",
+            "fdroid",
+            "aptoide",
+            "apkpure",
+         ];
+         const date = {
+            name: "Яндекс Браузер — с Алисой",
+            id: "yandex-browser",
+            desc: "Безопасный и быстрый браузер с голосовым поиском.",
+            dev: "Яндекс",
+            age: "3+",
+            category: {
+               id: 1, // 1 = apps, 2 = extens.
+               type: "browser",
+            },
+            stores: [
+               {
+                  id: 0,
+                  name: "Официальный сайт",
+                  link: "#",
+               },
+            ],
+            images: ["#"],
+            info: `Голосовой помощник Алиса умеет решать повседневные задачи: включит бодрую музыку, подскажет погоду за окном, определит, что на фотографии, развлечет сказкой и найдёт что угодно в интернете. 
+Технология активной защиты Protect предупреждает пользователей об опасных сайтах и страницах с платными мобильными подписками. 
+Блокировка рекламы позволяет избавиться от назойливых баннеров на интернет-страницах. Для этого необходимо подключить внешнее приложение-блокировщик.`,
+            features: [
+               {
+                  icon: "#",
+                  title: "Заголовок",
+                  text: "Text",
+               },
+            ],
+            other: [
+               {
+                  name: "Язык",
+                  value: "Русский, английский, испанский, итальянский, казахский, немецкий, португальский, турецкий, узбекский, украинский, упрощенный китайский, французский, чешский, японский.",
+               },
+            ],
+            links: [
+               {
+                  // icon: "#",
+                  title: "Сайт разработчика",
+                  url: "#",
+               },
+            ],
+            articles: [
+               {
+                  title: "Яндекс браузер для Андроид ТВ",
+                  bg: "#",
+                  author: "user",
+                  dateEdit: "12 янв 2022",
+                  content: `1) На miui/emui/flyme и подобных прошивках нужно выдать microG все возможные разрешения, отключить запрет на работу в фоне и прочие подобные ограничения ("Умный режим", режим "Смарт-фон" и т.п.), добавить в исключения энергосбережения. То же самое делаем если аккаунт периодически вылетает. Ещё иногда помогает сделать microG системным приложением (например через Lucky Patcher).
+2) Нужно чтобы microG был установлен до ютуба, а не после. Если сначала был установлен ютуб, то обычно достаточно просто удалить его и установить заново. Возможно потребуется перезагрузить устройство.
+3) Иногда при вылетах аккаунта может помочь удаление аккаунта в настройках телефона и повторное его добавление в моде. Аккаунт от microG тот, который со старой иконкой на синем квадратном фоне.
+4) Если на google-аккаунте был сменён пароль, то нужно удалить мод и обязательно microG, после чего повторить установку. Если включена двухфакторная авторизация, то её нужно предварительно отключить. Иногда аккаунт может вылетать если в телефоне установлен неправильный часовой пояс - установите вручную правильный или наоборот переключите на автоматический режим.
+5) Проблемы с авторизацией могут вызывать различные антивирусы/оптимизаторы/чистильщики и прочие подобные программы (зачастую встроенные), которые убивают microG. К сожалению на некоторых кривых прошивках различных китайских аппаратов проблемы с авторизацией судя по всему можно решить только сменой прошивки/аппарата.
+6) Если ничего не помогло ещё можно попробовать установить старую версию microG и, возможно, повторить предыдущие пункты.
+7) Авторизация в microG на Android 4.3 и ниже перестала работать. Обновляйте ваши прошивки/девайсы или пробуйте это, это или это.
+8) Недавно появилась проблема с зависанием авторизации после нажатия кнопки "Принимаю". Это происходит из-за новой (74 и выше) версии Android System WebView и Chrome (что именно используется зависит от прошивки, это можно узнать в "настройках разработчика").
+Данная проблема решена в YouTube Vanced 14.21.54 + microG 0.2.6.
+Для более старых версий мода пробуем фикс microG 0.2.4, а если он не сработал, то читаем дальше.
+В таком случае нужно: удалить обновления WebView и/или Chrome ("отключить" в настройках телефона, включив отображение системных или так, так и так на миуе, или "удалить" в маркете по ссылкам выше), удалить мод Vanced и microG, перезагрузить устройство и повторить установку/авторизацию заново. Ещё можно попробовать в "настройках разработчика" переключить Сервис WebView на Chrome или наоборот (для успешной авторизации нужна версия 73 и ниже). Там же нужно проверить и отключить настройку Многопроцессорный WebView, которая тоже иногда мешает авторизации. На Android Q может помочь откат до P. Если ничего не помогло - ставьте magisk/root версии. Если рута нет, бут залочен, откатываться не на что, а предустановлена 74 версия, которую нельзя удалить - наслаждайтесь рекламой`,
+                  resource: "4pda.to",
+               },
+            ],
+         };
+      </script>
+
+      <nav
+         class="navbar navbar-expand-sm navbar-light bg-light d-flex justify-content-between p-3"
+      >
+         <div class="container-fluid">
+            <a href="#" class="navbar-brand">
+               <img src="../assets/logo.svg" alt="Логотип" />
+            </a>
+            <div
+               class="collapse navbar-collapse d-flex justify-content-center"
+               id="navbarTogglerPages"
+            >
+               <ul class="navbar-nav gap-2">
+                  <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="#"
+                        >Главная</a
+                     >
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="#">Приложения</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="#">Расшириения</a>
+                  </li>
+               </ul>
+            </div>
+            <div class="navbar-btns d-flex">
+               <button type="button" class="btn">
+                  <i
+                     class="bi bi-moon-stars"
+                     style="font-size: 24px; color: #8f8f8f"
+                  ></i>
+               </button>
+               <button type="button" class="btn">
+                  <i
+                     class="bi bi-search"
+                     style="font-size: 24px; color: #8f8f8f"
+                  ></i>
+               </button>
+               <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarTogglerPages"
+                  aria-controls="navbarTogglerPages"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+               >
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+            </div>
+         </div>
+      </nav>
+
+      <main class="container-lg">
+         <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+               <!-- product -->
+               <section
+                  class="product d-flex align-items-center gap-4 pt-5 pb-4"
+               >
+                  <div class="product__logo d-none d-sm-block">
+                     <img src="../assets/yandex-browser.png" alt="Логотиа" />
+                  </div>
+                  <div class="product-header">
+                     <div class="product-header__title">
+                        <h1>Яндекс Браузер — с Алисой</h1>
+                     </div>
+                     <div class="product-header__subtitle">
+                        Безопасный и быстрый браузер с голосовым поиском.
+                     </div>
+                     <div class="product-header__dev pb-2">
+                        <a href="#">Яндекс</a>
+                     </div>
+                     <div
+                        class="product__other d-flex align-items-center gap-2"
+                     >
+                        <div class="product__age">3+</div>
+                        <div
+                           class="product__category d-flex align-items-center gap-2"
+                        >
+                           <div class="category__item">Приложение</div>
+                           <div class="category__item">Браузер</div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+
+               <!-- downloads -->
+               <section class="downloads d-flex align-items-center gap-3 pb-4">
+                  <div class="downloads__button">
+                     <button type="button" class="btn btn-primary btn-lg">
+                        Скачать
+                     </button>
+                  </div>
+
+                  <div class="downloads__stores d-flex">
+                     <a href="https://play.google.com/store/apps/details?id=com.yandex.browser" class="store googleplay">
+                        <img
+                           src="../assets/stores/googleplay_logo.svg"
+                           alt="Google Play"
+                        />
+                     </a>
+                     <a href="https://apps.apple.com/ru/app/яндекс-браузер/id483693909" class="store appstore">
+                        <img
+                           src="../assets/stores/appstore_logo.svg"
+                           alt="App Store"
+                        />
+                     </a>
+                     <a href="https://apps.microsoft.com/store/detail/яндекс-браузер-—-быстрый-и-безопасный/XPFCFKCNNTXGQD?hl=ru-ru&gl=ru" class="store microsoftstore">
+                        <img
+                           src="../assets/stores/microsoftstore_logo.svg"
+                           alt="Ьicrosoft Store"
+                        />
+                     </a>
+                     <a href="https://apps.rustore.ru/app/com.yandex.browser" class="store rustore">
+                        <img
+                           src="../assets/stores/rustore_logo.svg"
+                           alt="RuStore"
+                        />
+                     </a>
+                     <a href="https://apps.rustore.ru/app/com.yandex.browser" class="store rustore website">
+                        <img
+                           src="../assets/stores/apkpure_logo.svg"
+                           alt="Apkpure"
+                        />
+                     </a>
+                     <a href="https://apps.rustore.ru/app/com.yandex.browser" class="store rustore website">
+                        <img
+                           src="../assets/stores/uptodown_logo.svg"
+                           alt="Uptodown"
+                        />
+                     </a>
+                  </div>
+
+                  <div
+                     class="downloads__os d-flex align-items-center gap-2 opacity-50"
+                  >
+                     <div class="os android">
+                        <img src="../assets/os/android.svg" alt="Android" />
+                     </div>
+                     <div class="os iphone">
+                        <img src="../assets/os/iphone.svg" alt="IPhone" />
+                     </div>
+                     <div class="os windows">
+                        <img src="../assets/os/windows.svg" alt="indows" />
+                     </div>
+                  </div>
+               </section>
+
+               <!-- screen -->
+               <section class="screens pb-3">Screens</section>
+
+               <!-- descr -->
+               <section class="descr pb-3">
+                  <div class="descr__title d-flex align-items-center gap-2">
+                     <h3>Описание</h3>
+                     <button
+                        type="button"
+                        class="btn p-0 mb-1"
+                        style="height: fit-content"
+                     >
+                        <i
+                           class="bi bi-plus-circle"
+                           style="font-size: 20px; color: #c4c4c4"
+                        ></i>
+                     </button>
+                  </div>
+                  <div class="descr__text">
+                     Голосовой помощник Алиса умеет решать повседневные задачи:
+                     включит бодрую музыку, подскажет погоду за окном,
+                     определит, что на фотографии, развлечет сказкой и найдёт
+                     что угодно в интернете. <br />
+                     Технология активной защиты Protect предупреждает
+                     пользователей об опасных сайтах и страницах с платными
+                     мобильными подписками. <br />
+                     Блокировка рекламы позволяет избавиться от назойливых
+                     баннеров на интернет-страницах. Для этого необходимо
+                     подключить внешнее приложение-блокировщик.
+                  </div>
+               </section>
+
+               <!-- features -->
+               <section class="features pb-4">
+                  <div class="features__title d-flex align-items-center gap-2">
+                     <h3>Возможности</h3>
+                     <button
+                        type="button"
+                        class="btn p-0 mb-1"
+                        style="height: fit-content"
+                     >
+                        <i
+                           class="bi bi-plus-circle"
+                           style="font-size: 20px; color: #c4c4c4"
+                        ></i>
+                     </button>
+                  </div>
+                  <div
+                     class="features__list"
+                     style="
+                        border-radius: 16px;
+                        border: 1px solid #ebebeb;
+                        background: #ebebeb;
+                        overflow: hidden;
+
+                        /* Shadow / 400 */
+                        box-shadow: 0px 8px 24px -4px rgba(24, 39, 75, 0.08),
+                           0px 6px 12px -6px rgba(24, 39, 75, 0.12);
+                     "
+                  >
+                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item feature d-flex gap-1">
+                           <div class="feature__icon">⭐</div>
+                           <div class="features__info">
+                              <strong class="features__title">
+                                 Поддержка расширений Opera и Chrome
+                              </strong>
+                              <div class="features__text pt-1">
+                                 Позволяет добавить в браузер практически любые
+                                 нужные вам функции.
+                              </div>
+                           </div>
+                        </li>
+                        <li class="list-group-item feature d-flex gap-1">
+                           <div class="feature__icon">🔐</div>
+                           <div class="features__info">
+                              <strong class="features__title">
+                                 Технология активной защиты Protect
+                              </strong>
+                              <div class="features__text pt-1">
+                                 Предупреждает пользователей об опасных сайтах,
+                                 предотвращает утечку личных данных в публичных
+                                 Wi-Fi-сетях и проверяет загружаемые файлы на
+                                 вирусы.
+                              </div>
+                           </div>
+                        </li>
+                        <li class="list-group-item feature d-flex gap-1">
+                           <div class="feature__icon">💨</div>
+                           <div class="features__info">
+                              <strong class="features__title">
+                                 Режим Турбо 2.0 (для предыдущих версий)
+                              </strong>
+                              <div class="features__text pt-1">
+                                 Ускоряет загрузку страниц, картинок и видео в
+                                 браузере и делает пользование интернетом
+                                 комфортным даже на низкой скорости доступа.
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+
+               <!-- links -->
+               <section class="links pb-4">
+                  <div class="links__title">
+                     <h3>Ссылки</h3>
+                  </div>
+                  <div
+                     class="features__list"
+                     style="
+                        border-radius: 16px;
+                        border: 1px solid #ebebeb;
+                        background: #ebebeb;
+                        overflow: hidden;
+
+                        /* Shadow / 400 */
+                        box-shadow: 0px 8px 24px -4px rgba(24, 39, 75, 0.08),
+                           0px 6px 12px -6px rgba(24, 39, 75, 0.12);
+                     "
+                  >
+                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item links__item d-flex gap-1">
+                           <a href="#" class="link">
+                              <div class="link__name d-flex gap-1">
+                                 <div class="name__icon">🔗</div>
+                                 <div class="name__text">Сайт разработчика</div>
+                              </div>
+                              <div class="link__icon-go">
+                                 <i class="bi bi-arrow-up-right-circle"></i>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item links__item d-flex gap-1">
+                           <a href="#" class="link">
+                              <div class="link__name d-flex gap-1">
+                                 <div class="name__icon">🔗</div>
+                                 <div class="name__text">Сайт разработчика</div>
+                              </div>
+                              <div class="link__icon-go">
+                                 <i class="bi bi-arrow-up-right-circle"></i>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item links__item d-flex gap-1">
+                           <a href="#" class="link">
+                              <div class="link__name d-flex gap-1">
+                                 <div class="name__icon">🔗</div>
+                                 <div class="name__text">Сайт разработчика</div>
+                              </div>
+                              <div class="link__icon-go">
+                                 <i class="bi bi-arrow-up-right-circle"></i>
+                              </div>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+
+               <!-- articles -->
+               <section class="articles">
+                  <div class="articles__title">
+                     <h3>Статьи</h3>
+                  </div>
+                  <div class="articles__list">
+                     <div class="article">
+                        <div class="article__icon">🔗</div>
+                        <div class="article__text">
+                           Яндекс браузер для Андроид ТВ
+                        </div>
+                        <div class="article__icon-go">-></div>
+                        <div class="article__data">
+                           <div class="author">user</div>
+                           <div class="date-edit">11 августа 2023, 17:55</div>
+                        </div>
+                        <div class="article__content">
+                           1) На miui/emui/flyme и подобных прошивках нужно
+                           выдать microG все возможные разрешения, отключить
+                           запрет на работу в фоне и прочие подобные ограничения
+                           ("Умный режим", режим "Смарт-фон" и т.п.), добавить в
+                           исключения энергосбережения. То же самое делаем если
+                           аккаунт периодически вылетает. Ещё иногда помогает
+                           сделать microG системным приложением (например через
+                           Lucky Patcher). 2) Нужно чтобы microG был установлен
+                           до ютуба, а не после. Если сначала был установлен
+                           ютуб, то обычно достаточно просто удалить его и
+                           установить заново. Возможно потребуется перезагрузить
+                           устройство. .article__
+                        </div>
+                        <div class="article__resource">
+                           <a href="#">4pda.to</a>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+            </div>
+         </div>
+      </main>
+
+      <script
+         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+         crossorigin="anonymous"
+      ></script>
+      <script
+         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+         crossorigin="anonymous"
+      ></script>
+      <script
+         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+         integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+         crossorigin="anonymous"
+      ></script>
+   </body>
+</html>
